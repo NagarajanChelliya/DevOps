@@ -1,5 +1,18 @@
-FROM node:18-alpine
+# Use an official Python base image
+FROM python:3.10-slim
+
+# Set working directory
 WORKDIR /app
-COPY server.js .
-EXPOSE 80
-CMD ["node", "server.js"]
+
+# Install dependencies
+COPY requirement.txt .
+RUN pip install --no-cache-dir -r requirement.txt
+
+# Copy app code
+COPY . .
+
+# Expose FastAPI port
+EXPOSE 8000
+
+# Run with Uvicorn
+CMD ["uvicorn", "Bilstm_api:app", "--host", "0.0.0.0", "--port", "8000"]
