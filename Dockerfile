@@ -12,7 +12,8 @@ RUN pip install --no-cache-dir -r requirement.txt
 COPY . .
 
 # Expose FastAPI port
-EXPOSE 80
+EXPOSE 8000
 
 # Run with Uvicorn
 CMD ["uvicorn", "Bilstm_api:app", "--host", "0.0.0.0", "--port", "80"]
+#CMD ["uvicorn", "Bilstm_api:app", "--host", "localhost", "--port", "8000"]
